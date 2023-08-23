@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
+import spawn from 'cross-spawn';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+
+const lighthouse = require.resolve('lighthouse/cli');
 
 async function run() {
   const program = new Command();
@@ -16,7 +22,27 @@ async function run() {
   const [url] = program.args;
   const options = program.opts();
 
-  console.log(`url: ${url}, iteration: ${options.iteration}`);
+  console.log(
+    `🗼 Running Lighthouse for ${url}. It will take a while, please wait...`
+  );
+  const results = [];
+
+  for (let i = 0; i < options.iteration; i++) {
+    const { status, stdout } = spawn.sync(process.execPath, [
+      lighthouse,
+      url,
+      '--output=json',
+      '--chromeFlags=--headless',
+      '--only-categories=performance',
+    ]);
+
+    if (status !== 0) {
+      continue;
+    }
+
+    results.push(JSON.parse(stdout.toString()));
+  }
+
 }
 
 run();
