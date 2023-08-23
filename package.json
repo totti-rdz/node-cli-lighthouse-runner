@@ -3,6 +3,7 @@
   "author": "Thorsten Herfurtner",
   "version": "0.1.0",
   "description": "CLI tool to run lighthouse multiple times on a given web page and aggregate the data",
+  "type": "module",
   "license": "ISC",
   "main": "index.js",
   "bin": {
