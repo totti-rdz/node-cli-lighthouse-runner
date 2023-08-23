@@ -2,7 +2,7 @@
 /node_modules
 
 # production
-/dist
+/bin
 
 # misc
 .DS_Store
