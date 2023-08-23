@@ -7,6 +7,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "lint": "eslint '**/*.{js,ts}' --fix",
     "start": "tsc && node bin",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
