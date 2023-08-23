@@ -5,6 +5,9 @@
   "description": "CLI tool to run lighthouse multiple times on a given web page and aggregate the data",
   "license": "ISC",
   "main": "index.js",
+  "bin": {
+    "lighthouse-runner": "./bin/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "lint": "eslint '**/*.{js,ts}' --fix",
