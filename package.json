@@ -1,0 +1,16 @@
+{
+  "name": "cli-lighthouse-runner",
+  "author": "Thorsten Herfurtner",
+  "version": "0.1.0",
+  "description": "CLI tool to run lighthouse multiple times on a given web page and aggregate the data",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "lighthouse",
+    "cli"
+  ]
+}
