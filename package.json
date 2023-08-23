@@ -9,7 +9,8 @@
     "lighthouse-runner": "./bin/index.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run chmod",
+    "chmod": "chmod u+x ./bin/index.js",
     "lint": "eslint '**/*.{js,ts}' --fix",
     "prettier": "prettier --write .",
     "start": "tsc && node bin",
