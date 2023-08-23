@@ -12,5 +12,9 @@
     "node",
     "lighthouse",
     "cli"
-  ]
+  ],
+  "devDependencies": {
+    "@types/node": "^20.5.3",
+    "typescript": "^5.1.6"
+  }
 }
