@@ -8,6 +8,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint '**/*.{js,ts}' --fix",
+    "prettier": "prettier --write .",
     "start": "tsc && node bin",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
