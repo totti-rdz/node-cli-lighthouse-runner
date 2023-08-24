@@ -1,6 +1,6 @@
-import { styleError } from './styleError.js';
+import { format } from './format.js';
 
 export const handleError = (message: string) => {
-  console.error(styleError(message));
+  console.error(format.error(message));
   process.exit(1);
 };
