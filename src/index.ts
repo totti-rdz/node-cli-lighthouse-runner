@@ -33,7 +33,7 @@ async function run() {
     handleError('Url must start with "http://" or "https://"');
   }
 
-  console.log(
+  console.info(
     `🗼 Running Lighthouse for ${url}. It will take a while, please wait...`
   );
   const results = [];
@@ -61,8 +61,8 @@ async function run() {
 
   const median = computeMedianRun(results);
 
-  console.log(`\n${chalk.green('✔')} Report is ready for ${median.finalUrl}`);
-  console.log(
+  console.info(`\n${chalk.green('✔')} Report is ready for ${median.finalUrl}`);
+  console.info(
     `🗼 Median performance score: ${format.score(
       median.categories.performance.score,
       median.categories.performance.score * 100
@@ -80,7 +80,7 @@ async function run() {
 
   primaryMatrices.map((matrix) => {
     const { title, displayValue, score } = median.audits[matrix];
-    console.log(`🗼 Median ${title}: ${format.score(score, displayValue)}`);
+    console.info(`🗼 Median ${title}: ${format.score(score, displayValue)}`);
   });
 }
 
