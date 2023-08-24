@@ -1,4 +1,5 @@
 import { createRequire } from 'node:module';
+import * as LH from 'lighthouse/types/lh.js';
 import { OptionValues } from 'commander';
 import spawn from 'cross-spawn';
 
@@ -6,7 +7,10 @@ const require = createRequire(import.meta.url);
 
 const lighthouse = require.resolve('lighthouse/cli');
 
-export const runLightHouse = (url: string, options: OptionValues) => {
+export const runLightHouse = (
+  url: string,
+  options: OptionValues
+): LH.Result[] => {
   console.info(
     `🗼 Running Lighthouse for ${url}. It will take a while, please wait...`
   );
