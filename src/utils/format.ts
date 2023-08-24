@@ -1,6 +1,6 @@
 import os from 'os';
 import chalk from 'chalk';
-import { styleError } from './styleError.js';
+import { handleError } from './handleError.js';
 
 class Format {
   public error(message: string) {
@@ -16,7 +16,7 @@ class Format {
      * - 0.9 to 1 (green): Good
      */
     if (score < 0 || score > 1) {
-      throw new Error(styleError('Score out of bound'));
+      handleError('Score out of bound');
     }
 
     if (score >= 0.9 && score <= 1) {
