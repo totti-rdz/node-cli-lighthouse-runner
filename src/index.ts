@@ -88,4 +88,5 @@ async function run() {
   });
 }
 
+console.clear();
 run();
