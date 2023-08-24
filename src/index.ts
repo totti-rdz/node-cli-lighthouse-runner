@@ -1,15 +1,10 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import spawn from 'cross-spawn';
-import { createRequire } from 'node:module';
 import { computeMedianRun } from 'lighthouse/core/lib/median-run.js';
 import chalk from 'chalk';
 import { format } from './utils/format.js';
 import { handleError } from './utils/handleError.js';
-
-const require = createRequire(import.meta.url);
-
-const lighthouse = require.resolve('lighthouse/cli');
+import { runLightHouse } from './services/runLighthouse.js';
 
 async function run() {
   const program = new Command();
@@ -33,26 +28,7 @@ async function run() {
     handleError('Url must start with "http://" or "https://"');
   }
 
-  console.info(
-    `🗼 Running Lighthouse for ${url}. It will take a while, please wait...`
-  );
-  const results = [];
-
-  for (let i = 0; i < options.iteration; i++) {
-    const { status, stdout } = spawn.sync(process.execPath, [
-      lighthouse,
-      url,
-      '--output=json',
-      '--chromeFlags=--headless',
-      '--only-categories=performance',
-    ]);
-
-    if (status !== 0) {
-      continue;
-    }
-
-    results.push(JSON.parse(stdout.toString()));
-  }
+  const results = runLightHouse(url, options);
 
   if (!results || results.length < 1) {
     handleError('Running lighthouse yielded no results');
