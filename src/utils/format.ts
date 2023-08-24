@@ -7,7 +7,7 @@ class Format {
     return chalk.bold.redBright(message + os.EOL);
   }
 
-  public score(score: number, value: number) {
+  public score(score: number, value: number | string) {
     /**
      * Coloring display value based on Lighthouse score.
      *
