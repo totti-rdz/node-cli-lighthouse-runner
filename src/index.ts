@@ -5,6 +5,7 @@ import { createRequire } from 'node:module';
 import { computeMedianRun } from 'lighthouse/core/lib/median-run.js';
 import chalk from 'chalk';
 import { draw } from './utils/printScore.js';
+import os from 'os';
 
 const require = createRequire(import.meta.url);
 
@@ -12,6 +13,9 @@ const lighthouse = require.resolve('lighthouse/cli');
 
 async function run() {
   const program = new Command();
+
+  const styleError = (message: string) =>
+    chalk.bold.redBright(message + os.EOL);
 
   program
     .argument('<url>', 'Lighthouse will run the analysis on the URL.')
@@ -26,9 +30,7 @@ async function run() {
   const options = program.opts();
 
   if (!(url.startsWith('http://') || url.startsWith('https://'))) {
-    console.error(
-      chalk.redBright('Url must start with "http://" or "https://"')
-    );
+    console.error(styleError('Url must start with "http://" or "https://"'));
     return;
   }
 
@@ -54,7 +56,7 @@ async function run() {
   }
 
   if (!results || results.length < 1) {
-    console.error(chalk.redBright('Running lighthouse yielded no results'));
+    console.error(styleError('Running lighthouse yielded no results'));
     return;
   }
 
