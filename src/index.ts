@@ -24,6 +24,9 @@ async function run() {
       'How many times Lighthouse should run the analysis per URL',
       '5'
     )
+    .configureOutput({
+      outputError: (str, write) => write(styleError(str)),
+    })
     .parse();
 
   const [url] = program.args;
