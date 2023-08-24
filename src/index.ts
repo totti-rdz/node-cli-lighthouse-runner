@@ -4,7 +4,7 @@ import spawn from 'cross-spawn';
 import { createRequire } from 'node:module';
 import { computeMedianRun } from 'lighthouse/core/lib/median-run.js';
 import chalk from 'chalk';
-import { draw } from './utils/printScore.js';
+import { formatScore } from './utils/formatScore.js';
 import os from 'os';
 
 const require = createRequire(import.meta.url);
@@ -67,7 +67,7 @@ async function run() {
 
   console.log(`\n${chalk.green('✔')} Report is ready for ${median.finalUrl}`);
   console.log(
-    `🗼 Median performance score: ${draw(
+    `🗼 Median performance score: ${formatScore(
       median.categories.performance.score,
       median.categories.performance.score * 100
     )}`
@@ -84,7 +84,7 @@ async function run() {
 
   primaryMatrices.map((matrix) => {
     const { title, displayValue, score } = median.audits[matrix];
-    console.log(`🗼 Median ${title}: ${draw(score, displayValue)}`);
+    console.log(`🗼 Median ${title}: ${formatScore(score, displayValue)}`);
   });
 }
 
