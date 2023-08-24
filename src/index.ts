@@ -53,6 +53,11 @@ async function run() {
     results.push(JSON.parse(stdout.toString()));
   }
 
+  if (!results || results.length < 1) {
+    console.error(chalk.redBright('Running lighthouse yielded no results'));
+    return;
+  }
+
   const median = computeMedianRun(results);
 
   console.log(`\n${chalk.green('✔')} Report is ready for ${median.finalUrl}`);
