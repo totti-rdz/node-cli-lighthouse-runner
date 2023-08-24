@@ -1,5 +1,5 @@
 {
-  "name": "cli-lighthouse-runner",
+  "name": "lighthouse-runner-cli",
   "author": "Thorsten Herfurtner",
   "version": "0.1.0",
   "description": "CLI tool to run lighthouse multiple times on a given web page and aggregate the data",
