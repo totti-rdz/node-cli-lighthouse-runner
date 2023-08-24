@@ -25,6 +25,13 @@ async function run() {
   const [url] = program.args;
   const options = program.opts();
 
+  if (!(url.startsWith('http://') || url.startsWith('https://'))) {
+    console.error(
+      chalk.redBright('Url must start with "http://" or "https://"')
+    );
+    return;
+  }
+
   console.log(
     `🗼 Running Lighthouse for ${url}. It will take a while, please wait...`
   );
