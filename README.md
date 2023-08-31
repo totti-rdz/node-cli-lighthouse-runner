@@ -13,14 +13,20 @@ To run the project it has to be cloned as it is not published to npm.
    ```sh
    git clone https://github.com/totti-rdz/node-cli-lighthouse-runner.git
    ```
-
+   
 2. Install and build project:
 
    ```sh
    npm install && npm run build
    ```
+   
+3. Enable execution of the built output:
 
-3. Run:
+   ```sh
+   npm run chmod
+   ```
+
+4. Run:
 
    ```sh
    ./bin/index.js https://www.google.de --iteration 5
@@ -28,7 +34,7 @@ To run the project it has to be cloned as it is not published to npm.
 
    The --iteration flag is optional. If not specified, the lighthouse test will be run 5 times by default.
 
-4. Or create symlink (optionally):
+5. Or create symlink (optionally):
 
    To use this project from anywhere create a symlink
 
